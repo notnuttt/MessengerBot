@@ -63,7 +63,7 @@ type Payload struct {
 func VerificationEndpoint(w http.ResponseWriter, r *http.Request) {
 	challenge := r.URL.Query().Get("hub.challenge")
 	mode := r.URL.Query().Get("hub.mode")
-	token := r.URL.Query().Get("hub.verify_token")
+	token := r.URL.Query().Get("hub.EAAaiQ7zxeusBAK3dnVl96XRul9wW1l0dbtH3noP5d5IkDZChWTn0IFAWDEi8eTukXcQLIZAntLjpQpZCtEfnVfjkresMdOW4wWU2nkCDRYwZBZBlMr1feRjHksd9fkmwl4niruKthencjCSXvZA3joIhZAzErurDBnv1hQkINICmwZDZD")
 
 	if mode != "" && token == os.Getenv("VERIFY_TOKEN") {
 		w.WriteHeader(200)
@@ -91,7 +91,7 @@ func ProcessMessage(event Messaging) {
 	}
 	body := new(bytes.Buffer)
 	json.NewEncoder(body).Encode(&response)
-	url := fmt.Sprintf(FACEBOOK_API, os.Getenv("PAGE_ACCESS_TOKEN"))
+	url := fmt.Sprintf(FACEBOOK_API, os.Getenv("EAAaiQ7zxeusBAK3dnVl96XRul9wW1l0dbtH3noP5d5IkDZChWTn0IFAWDEi8eTukXcQLIZAntLjpQpZCtEfnVfjkresMdOW4wWU2nkCDRYwZBZBlMr1feRjHksd9fkmwl4niruKthencjCSXvZA3joIhZAzErurDBnv1hQkINICmwZDZD"))
 	req, err := http.NewRequest("POST", url, body)
 	req.Header.Add("Content-Type", "application/json")
 	if err != nil {
